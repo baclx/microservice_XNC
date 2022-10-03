@@ -20,9 +20,21 @@ public class BeanConfig {
     @Bean
     public RouteLocator gatewayRoutes(RouteLocatorBuilder builder) {
         return builder.routes()
-//                .route("order-service",r -> r.path("/api/v1/order/**")
-//                    .filters(f -> f.rewritePath("/api/v1/order/(?<remains>.*)", "/${remains}"))
-//                    .uri("lb://ORDER-SERVICE/"))
+                .route("account-service",r -> r.path("/api/v1/account/**")
+                        .filters(f -> f.rewritePath("/api/v1/account/(?<remains>.*)", "/${remains}"))
+                        .uri("lb://ACCOUNT-SERVICE/"))
+                .route("customer-service",r -> r.path("/api/v1/customer/**")
+                        .filters(f -> f.rewritePath("/api/v1/customer/(?<remains>.*)", "/${remains}"))
+                        .uri("lb://CUSTOMER-SERVICE/"))
+                .route("immigration-info-service",r -> r.path("/api/v1/immigration-information/**")
+                        .filters(f -> f.rewritePath("/api/v1/immigration-information/(?<remains>.*)", "/${remains}"))
+                        .uri("lb://IMMIGRATION-INFORMATION-SERVICE/"))
+                .route("license-service",r -> r.path("/api/v1/license/**")
+                        .filters(f -> f.rewritePath("/api/v1/license/(?<remains>.*)", "/${remains}"))
+                        .uri("lb://LICENSE-SERVICE/"))
+                .route("identity-card-service",r -> r.path("/api/v1/identity-card/**")
+                        .filters(f -> f.rewritePath("/api/v1/identity-card/(?<remains>.*)", "/${remains}"))
+                        .uri("lb://IDENTITY-CARD-SERVICE/"))
                 .build();
     }
 

@@ -4,10 +4,14 @@ spring:
   cloud:
     gateway:
       routes:
-#        - id: ORDER-SERVICE
-#          uri: lb://ORDER-SERVICE
-#          predicates:
-#              - Path=/api/v1/**
+        - id: ORDER-SERVICE
+          uri: lb://ORDER-SERVICE
+          predicates:
+              - Path=/api/v1/**
+        - id: ACCOUNT-SERVICE
+          uri: lb://ACCOUNT-SERVICE/
+          predicates:
+            - Path=/api/v1/**
       discovery:
         locator:
           enabled: true
